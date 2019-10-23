@@ -16,7 +16,7 @@ client.on('message', msg => {
             msg.member.voiceChannel.join()
                 .then(connection => {
                     msg.delete();
-                    const dispatcher = connection.playFile('E:/Projecten/Bots/test-bot/sounds/airhorn.mp3');
+                    const dispatcher = connection.playFile('PATH TO SOUND FILE');
                     dispatcher.on('end', () => {
                         msg.member.voiceChannel.leave();
                     });
