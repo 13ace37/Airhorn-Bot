@@ -29,12 +29,6 @@ client.on('message', msg => {
         }
     }
 
-    // if (msg.content === '/leave') {
-    //     if (msg.member.voiceChannel) {
-    //         msg.member.voiceChannel.leave()
-    //     }
-    // }
-
 });
 
 client.login(auth.token);
