@@ -1,27 +1,27 @@
-const { Client } = require('discord.js');
+const { Client } = require("discord.js");
 const client = new Client();
 
-const auth = require('./auth.json');
+const { token } = require("./auth.json");
 
-client.on('ready', () => {
+client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity('/join');
+    client.user.setActivity("/join");
 });
 
-client.on('message', msg => {
+client.on("message", msg => {
     if (!msg.guild) return;
 
-    if (msg.content === '/join') {
+    if (msg.content === "/join") {
         if (msg.member.voiceChannel) {
             msg.member.voiceChannel.join()
                 .then(connection => {
                     msg.delete();
-                    const dispatcher = connection.playFile('PATH TO SOUND FILE');
-                    dispatcher.on('end', () => {
+                    const dispatcher = connection.playFile("PATH TO SOUND FILE");
+                    dispatcher.on("end", () => {
                         msg.member.voiceChannel.leave();
                     });
 
-                    dispatcher.on('error', e => {
+                    dispatcher.on("error", e => {
                         console.log(e);
                     });
                 })
@@ -31,4 +31,4 @@ client.on('message', msg => {
 
 });
 
-client.login(auth.token);
+client.login(token);
