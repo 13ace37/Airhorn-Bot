@@ -6,7 +6,7 @@ A DiscordJS based bot who's playing an airhorn sound on demand.
 
 1. rename `example-config.js` into `config.js`
 2. type in your token, prefix and wanted play-command.
-3. run `npm i && npi start`
+3. run `npm i && npm start`
 
 ## Usage
 
