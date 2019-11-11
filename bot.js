@@ -8,17 +8,17 @@ client.on("ready", () => {
     client.user.setActivity("/join");
 });
 
-client.on("message", msg => {
-    if (!msg.guild) return;
+client.on("message", message => {
+    if (!message.guild) return;
 
-    if (msg.content === "/join") {
-        if (msg.member.voiceChannel) {
-            msg.member.voiceChannel.join()
+    if (message.content === "/join") {
+        if (message.member.voiceChannel) {
+            message.member.voiceChannel.join()
                 .then(connection => {
-                    msg.delete();
+                    message.delete();
                     const dispatcher = connection.playFile("PATH TO SOUND FILE");
                     dispatcher.on("end", () => {
-                        msg.member.voiceChannel.leave();
+                        message.member.voiceChannel.leave();
                     });
 
                     dispatcher.on("error", e => {
